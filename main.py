@@ -20,6 +20,22 @@ bot = commands.Bot(command_prefix="!", intents=intents, help_command=None) # Ini
 async def hello_command(ctx):
   await ctx.send(f'Hello, {ctx.author.name}!')
 
+@bot.command(name='help') # Help command
+async def help_command(ctx):
+  embed = discord.Embed(
+    color=discord.Color.red()
+  )
+  # Add fields to the embed (optional)
+  embed.set_author(
+    name="King Bob's Commands", 
+    url="https://github.com/GabeDiniz", 
+    # icon_url="<IMAGE-URL>"
+  )
+  # embed.set_thumbnail(url="<IMAGE-URL>")
+  embed.add_field(name='List commands', value='`!help`', inline=False)
+        
+  # Send the embed message to the same channel where the command was issued
+  await ctx.channel.send(embed=embed)
 
 # ========================================
 # RUN BOT
